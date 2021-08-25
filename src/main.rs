@@ -13,7 +13,6 @@ mod prelude {
     pub use legion::systems::*;
     pub const SCREEN_WIDTH: i32 = 80;
     pub const SCREEN_HEIGHT: i32 = 50;
-    pub const FRAME_DURATION: f32 = 75.0;
     pub const DISPLAY_WIDTH: i32 = SCREEN_WIDTH / 2;
     pub const DISPLAY_HEIGHT: i32 = SCREEN_HEIGHT / 2;
     pub use crate::map::*;
@@ -43,11 +42,9 @@ impl State {
         let map_builder = MapBuilder::new(&mut rng);
         spawn_player(&mut ecs, map_builder.player_start);
         spawn_amulet_of_yala(&mut ecs, map_builder.amulet_start);
-        map_builder.rooms
+        map_builder.monster_spawns
             .iter()
-            .skip(1)
-            .map(|r| r.center())
-            .for_each(|pos| spawn_monster(&mut ecs, &mut rng, pos));
+            .for_each(|pos| spawn_monster(&mut ecs, &mut rng, *pos));
 
         resources.insert(map_builder.map);
         resources.insert(Camera::new(map_builder.player_start));
