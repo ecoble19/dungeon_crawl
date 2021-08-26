@@ -1,5 +1,6 @@
-pub use crate::prelude::*;
 use std::collections::HashSet;
+
+pub use crate::prelude::*;
 
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Render {
@@ -34,7 +35,7 @@ pub struct AmuletOfYala;
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct WantsToAttack {
     pub attacker: Entity,
-    pub victim: Entity
+    pub victim: Entity,
 }
 
 #[derive(Clone, Copy, Debug, PartialEq)]
@@ -46,10 +47,27 @@ pub struct Health {
 #[derive(Clone, PartialEq)]
 pub struct Name(pub String);
 
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ProvidesHealing {
+    pub amount: i32
+}
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ProvidesDungeonMap;
+
+#[derive(Clone, PartialEq)]
+pub struct Carried(pub Entity);
+
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ActivateItem {
+    pub used_by: Entity,
+    pub item: Entity,
+}
+
 pub struct FieldOfView {
     pub visible_tiles: HashSet<Point>,
     pub radius: i32,
-    pub is_dirty: bool
+    pub is_dirty: bool,
 }
 
 impl FieldOfView {
