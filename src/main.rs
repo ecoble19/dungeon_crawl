@@ -100,7 +100,6 @@ impl State {
                 pos.x = map_builder.player_start.x;
                 pos.y = map_builder.player_start.y;
             });
-
         if map_level == 2 {
             spawn_amulet_of_yala(&mut self.ecs, map_builder.amulet_start);
         } else {
