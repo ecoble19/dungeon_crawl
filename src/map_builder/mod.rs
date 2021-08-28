@@ -47,7 +47,6 @@ impl MapBuilder {
             0 => DungeonTheme::new(),
             _ => ForestTheme::new()
         };
-
         mb
     }
 
